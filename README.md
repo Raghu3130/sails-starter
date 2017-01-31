@@ -1,2 +1,3 @@
 # sails-starter
-Starter for Sails (Opinionated)
+
+a [Sails](http://sailsjs.org) application
