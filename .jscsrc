@@ -1,12 +1,12 @@
 {
   "plugins": [
-    'jscs-jsdoc'
+    "jscs-jsdoc"
   ],
-  "preset": 'google',
+  "preset": "google",
   "maxErrors": -1,
   "jsDoc": {
     "checkAnnotations": {
-      "preset": 'jsdoc3'
+      "preset": "jsdoc3"
     },
     "checkParamExistence": true,
     "checkParamNames": true,
@@ -18,14 +18,14 @@
     "enforceExistence": true,
     "requireParamDescription": true,
     "requireNewlineAfterDescription": true,
-    "leadingUnderscoreAccess": 'private',
+    "leadingUnderscoreAccess": "private",
     "checkRedundantAccess": true,
     "checkTypes": true,
     "requireReturnDescription": true
   },
   "requireSpaceAfterLineComment": true,
   "requireDotNotation": {
-    "allExcept": ['snake_case']
+    "allExcept": ["snake_case"]
   },
   "requirePaddingNewLinesAfterBlocks": true,
   "maximumLineLength": 100
