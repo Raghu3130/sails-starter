@@ -39,5 +39,8 @@
     "url": "git://github.com/shoaibmerchant/sails-starter.git"
   },
   "author": "shoaibmerchant",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "grunt-stylelint-reporter": "^2.0.0"
+  }
 }
