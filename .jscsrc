@@ -1,6 +1,9 @@
 {
   "plugins": [
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3affece8a03868e0beeace05501f7e65c4e45545
     "jscs-jsdoc"
   ],
   "preset": "google",
