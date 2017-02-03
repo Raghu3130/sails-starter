@@ -2,24 +2,21 @@
  * UserController
  *
  * @description :: Server-side logic for managing Users
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
-
 /**
- * User Controller (to handle user class)
+ * { function_description }
  *
  * @public
  *
- * @memberof   sails-starter
+ * @memberof   (parent_name_path)
  *
- * @author     shoaibmerchant
+ * @author     manoj
  *
- * @class      User
- * @param      {Object}  options  The options to initiatlize the class
+ * @class      User (name)
+ * @param      {User}  options  The options
  */
 function User(options) {
-	var log = Logger.child({module: 'User'});
+  options = 'hello';
 }
 
 module.exports = User();

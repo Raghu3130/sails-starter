@@ -23,8 +23,12 @@
 process.chdir(__dirname);
 
 // Ensure a "sails" can be located:
+//
+
 (function() {
+
   var sails;
+
   try {
     sails = require('sails');
   } catch (e) {
@@ -39,6 +43,7 @@ process.chdir(__dirname);
 
   // Try to get `rc` dependency
   var rc;
+
   try {
     rc = require('rc');
   } catch (e0) {
@@ -49,7 +54,7 @@ process.chdir(__dirname);
       console.error('Your `.sailsrc` file(s) will be ignored.');
       console.error('To resolve this, run:');
       console.error('npm install rc --save');
-      rc = function () { return {}; };
+      rc = function() { return {}; };
     }
   }
 
