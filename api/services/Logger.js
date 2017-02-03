@@ -24,9 +24,6 @@ function Logger() {
     outputMode: 'short'
   });
 
-  return {
-    init: init
-  };
   /**
      * { function_description }
      *
@@ -57,6 +54,10 @@ function Logger() {
 
     return log;
   }
+
+  return {
+    init: init
+  };
 }
 
 module.exports = Logger().init();
