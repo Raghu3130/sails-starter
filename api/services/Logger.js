@@ -19,7 +19,6 @@ var LOG_NAME = 'sails-starter';
 function Logger() {
 
   var log;
-
   var formatStream = bformat({
     outputMode: 'short'
   });
