@@ -33,8 +33,17 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
-  }
+    view: 'create'
+  },
+
+
+   '/session' : "SessionController.session",
+  '/auth' : "AuthuserController.auth",
+  '/create':"CreateController.createuser",
+  '/logout': "LogoutController.logout",
+  '/user':"UserController.getdata"
+
+ 
 
   /***************************************************************************
   *                                                                          *

@@ -1,0 +1,14 @@
+<% if(req.session.user) { %> <h1>welcome to dashboard </h1>
+<a href="/logout">
+	<button>
+		Logout
+	</button>
+</a>
+ <% } %>
+ <% if(!req.session.user) { %> 
+ <a href="/">
+	<button>
+		Login
+	</button>
+</a>
+ <% } %>

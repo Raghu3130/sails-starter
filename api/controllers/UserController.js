@@ -15,8 +15,13 @@
  * @class      User (name)
  * @param      {User}  options  The options
  */
-function User(options) {
-  options = 'hello';
-}
+module.exports = {
 
-module.exports = User();
+	getdata : function getdata(req,res){
+				if(req.session.user){
+		  				console.log("in session");
+		  				res.status(200);
+		  				res.send(req.session.user);
+		  			}
+	}
+}
