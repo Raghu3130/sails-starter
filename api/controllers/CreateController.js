@@ -1,27 +1,34 @@
 /**
- * CreateController
- *
- * @description :: Server-side logic for managing creates
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ * { to create user in database }
  */
+/* jshint undef: true, unused: true */
+/* globals User */
 
 module.exports = {
+  /**
+   * { function_description }
+   *
+   * @public
+   *
+   * @memberof   (parent_name_path)
+   *
+   * @author     manoj
+   *
+   * @param      {object}  req     The request
+   * @param      {object}  res     The resource
+   */
+  createuser:	function createuser(req, res) {
 
-	 createuser :	function createuser(req,res){
-	 				
-		 				console.log("create in");
-		 				var user = req.body.username;
-		 				var password = req.body.password;
-		 				console.log(user+" "+password);
-					 	Create.create({username:user,password:password}).exec(function(err){
-							if(err){
-								console.log(err);
-							}else{
-								res.send({user:"user created sucessfull"});
-							}
-						});
-				  
+    var user = req.body.username;
+    var password = req.body.password;
+    User.create({username: user,password: password}).exec(function(err) {
+      if (err) {
+        res.send(err);
+      }else {
+        res.send({user: 'user created sucessfull'});
+      }
+    });
 
-	 }
+  }
 };
 
