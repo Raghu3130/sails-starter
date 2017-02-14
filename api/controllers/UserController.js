@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing Users
  */
 /* globals User */
+/* globals bunyan */
 module.exports = {
   /**
    * to create new user in database(register)
@@ -18,12 +19,15 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   createUser:   function createUser(req, res) {
+    var log = bunyan.createLogger({name: 'createUser'});
     var user = req.body.username;
     var password = req.body.password;
     User.create({username: user, password: password}).exec(function(err) {
       if (err) {
+        log.error(err);
         res.send({error: err});
       }else {
+        log.info('SUCCESS');
         res.send({code: 'SUCCESS'});
       }
     });
@@ -41,6 +45,7 @@ module.exports = {
      * @param      {object}  res     The resource
      */
   login: function login(req, res) {
+    var log = bunyan.createLogger({name: 'login'});
     var user = req.body.username;
     var password =  req.body.password;
     User.find({username: user}).then(function(result) {
@@ -48,16 +53,20 @@ module.exports = {
         if (result[0].password === password) {
           req.session.user = result[0];
           req.session.isLoggedIn = true ;
+          log.info('SUCCESS');
           res.status(200);
           res.send({code: 'SUCCESS'});
         } else {
+          log.info('Failed to find User');
           res.send({code: 'FAILED'});
         }
       } else {
+        log.info('result array empty');
         res.send({code: 'FAILED'});
       }
-    }).catch(function(error) {
-      res.send({error: error});
+    }).catch(function() {
+      log.error('User not exist');
+      res.send({error: 'NOTFOUND'});
     });
   },
   /**
@@ -73,8 +82,10 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   logout: function logout(req, res) {
+      var log = bunyan.createLogger({name: 'logout'});
       req.session.user = null;
       req.session.isLoggedIn = false ;
+      log.info('Logout Success');
       res.status(200);
       res.send({code: 'LOGGED_OUT'});
     },
@@ -91,11 +102,14 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   session: function session(req, res) {
+    var log = bunyan.createLogger({name: 'Session'});
     if (req.session.user) {
+      log.info('session set');
       res.status(200);
       res.send({code: 'AUTHORIZED',data: req.session.user});
     }else {
       res.status(401);
+      log.info('session not set');
       res.send({code: 'UNAUTHORIZED'});
     }
   }
