@@ -47,7 +47,7 @@ module.exports = {
       if (result.length !== 0) {
         if (result[0].password === password) {
           req.session.user = result[0];
-          req.session.user.islogin = true ;
+          req.session.isLoggedIn = true ;
           res.status(200);
           res.send({code: 'SUCCESS'});
         } else {
@@ -74,6 +74,7 @@ module.exports = {
    */
   logout: function logout(req, res) {
       req.session.user = null;
+      req.session.isLoggedIn = false ;
       res.status(200);
       res.send({code: 'LOGGED_OUT'});
     },
