@@ -5,6 +5,7 @@
  */
 /* globals User */
 /* globals Logger */
+var logger = Logger.child({controller: 'UserController'});
 module.exports = {
   /**
    * to create new user in database(register)
@@ -19,15 +20,15 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   createUser:   function createUser(req, res) {
-    var log = Logger.child({'function name': 'createUser'});
+    var log = logger.child({action: 'createUser'});
     var user = req.body.username;
     var password = req.body.password;
     User.create({username: user, password: password}).exec(function(err) {
       if (err) {
-        log.error(err);
+        log.error('error at user create(insert) time', err);
         res.send({error: err});
       }else {
-        log.info('SUCCESS');
+        log.info('User created successfully');
         res.send({code: 'SUCCESS'});
       }
     });
@@ -45,7 +46,7 @@ module.exports = {
      * @param      {object}  res     The resource
      */
   login: function login(req, res) {
-    var log = Logger.child({'name': 'login'});
+    var log = Logger.child({action: 'login'});
     var user = req.body.username;
     var password =  req.body.password;
     User.find({username: user}).then(function(result) {
@@ -82,10 +83,10 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   logout: function logout(req, res) {
-      var log = Logger.child({'function name': 'logout'});
+      var log = Logger.child({action: 'logout'});
       req.session.user = null;
       req.session.isLoggedIn = false ;
-      log.info('Logout Success');
+      log.info('Logout Successfully');
       res.status(200);
       res.send({code: 'LOGGED_OUT'});
     },
@@ -102,7 +103,7 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   session: function session(req, res) {
-    var log = Logger.child({'function name': 'session'});
+    var log = Logger.child({action: 'session'});
     if (req.session.user) {
       log.info('session set');
       res.status(200);
