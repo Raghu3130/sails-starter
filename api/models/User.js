@@ -7,7 +7,7 @@
 module.exports = {
 
   attributes: {
-    username: {type: 'string'},
+    username: {type: 'string',unique: true},
     password: {type: 'string'}
   }
 };

@@ -37,11 +37,11 @@ module.exports.routes = {
   },
 
 
-   '/session' : "SessionController.session",
-  '/auth' : "AuthuserController.auth",
-  '/create':"CreateController.createuser",
-  '/logout': "LogoutController.logout",
-  '/user':"UserController.getdata"
+  '/user/session' : "UserController.session", 
+  '/user/getUser':"UserController.getUser",
+  '/user/login':"UserController.login",
+  '/user/logout':"UserController.logout",
+  '/user/createuser':"UserController.createuser"
 
  
 
