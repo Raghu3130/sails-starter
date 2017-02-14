@@ -36,7 +36,6 @@ module.exports.routes = {
     view: 'create'
   },
 
-
   '/user/session' : "UserController.session", 
   '/user/login' : "UserController.login",
   '/user/logout' : "UserController.logout",
