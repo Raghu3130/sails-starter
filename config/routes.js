@@ -38,10 +38,9 @@ module.exports.routes = {
 
 
   '/user/session' : "UserController.session", 
-  '/user/getUser':"UserController.getUser",
-  '/user/login':"UserController.login",
-  '/user/logout':"UserController.logout",
-  '/user/createuser':"UserController.createuser"
+  '/user/login' : "UserController.login",
+  '/user/logout' : "UserController.logout",
+  '/user/createuser' : "UserController.createUser"
 
  
 

@@ -6,36 +6,34 @@
 /* globals User */
 module.exports = {
   /**
-   * { function_description }
+   * to create new user in database(register)
    *
    * @public
    *
-   * @memberof   (parent_name_path)
+   * @memberof   UserController.js
    *
    * @author     manoj
    *
    * @param      {object}  req     The request
    * @param      {object}  res     The resource
    */
-  createuser:	function createuser(req, res) {
-
+  createUser:   function createUser(req, res) {
     var user = req.body.username;
     var password = req.body.password;
-    User.create({username: user,password: password}).exec(function(err) {
+    User.create({username: user, password: password}).exec(function(err) {
       if (err) {
         res.send({error: err});
       }else {
-        res.send({Code: 'SUCCESS'});
+        res.send({code: 'SUCCESS'});
       }
     });
-
   },
   /**
-     * { function_description }
+     *  check user credential to  login
      *
      * @public
      *
-     * @memberof   (parent_name_path)
+     * @memberof   UserController.js
      *
      * @author     manoj
      *
@@ -46,25 +44,28 @@ module.exports = {
     var user = req.body.username;
     var password =  req.body.password;
     User.find({username: user}).then(function(result) {
-      if (result[0].password === password) {
-        req.session.user = result[0];
-        req.session.user.islogin = true ;
-        res.status(200);
-        res.send({Code: 'SUCCESS'});
+      if (result.length !== 0) {
+        if (result[0].password === password) {
+          req.session.user = result[0];
+          req.session.user.islogin = true ;
+          res.status(200);
+          res.send({code: 'SUCCESS'});
+        } else {
+          res.send({code: 'FAILED'});
+        }
       } else {
-        res.status(200);
-        res.send({Code: 'FAILED'});
+        res.send({code: 'FAILED'});
       }
     }).catch(function(error) {
       res.send({error: error});
     });
   },
   /**
-   * { function_description }
+   * set logout
    *
    * @public
    *
-   * @memberof   (parent_name_path)
+   * @memberof   UserController.js
    *
    * @author     manoj
    *
@@ -72,18 +73,16 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   logout: function logout(req, res) {
-    req.session.user = null;
-    if (!req.session.user) {
+      req.session.user = null;
       res.status(200);
       res.send({code: 'LOGGED_OUT'});
-    }
-  },
+    },
   /**
-   * { function_description }
+   * check  session and send user information
    *
    * @public
    *
-   * @memberof   (parent_name_path)
+   * @memberof   UserController.js
    *
    * @author     manoj
    *
@@ -93,32 +92,10 @@ module.exports = {
   session: function session(req, res) {
     if (req.session.user) {
       res.status(200);
-      res.send({Code: 'AUTHORIZED'});
-
+      res.send({code: 'AUTHORIZED',data: req.session.user});
     }else {
       res.status(401);
-      res.send({Code: 'UNAUTHORIZED'});
-
-    }
-  },
-  /**
-   * { function_description }
-   *
-   * @public
-   *
-   * @memberof   (parent_name_path)
-   *
-   * @author     manoj
-   *
-   * @param      {object}  req     The request
-   * @param      {object}  res     The resource
-   */
-  getUser: function getUser(req, res) {
-    if (req.session.user) {
-      res.status(200);
-      res.send(req.session.user);
-    } else {
-      res.send({Code: 'UNAUTHORIZED'});
+      res.send({code: 'UNAUTHORIZED'});
     }
   }
 };
