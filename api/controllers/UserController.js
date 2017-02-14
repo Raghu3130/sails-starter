@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing Users
  */
 /* globals User */
-/* globals bunyan */
+/* globals Logger */
 module.exports = {
   /**
    * to create new user in database(register)
@@ -19,7 +19,7 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   createUser:   function createUser(req, res) {
-    var log = bunyan.createLogger({name: 'createUser'});
+    var log = Logger.child({'function name': 'createUser'});
     var user = req.body.username;
     var password = req.body.password;
     User.create({username: user, password: password}).exec(function(err) {
@@ -45,7 +45,7 @@ module.exports = {
      * @param      {object}  res     The resource
      */
   login: function login(req, res) {
-    var log = bunyan.createLogger({name: 'login'});
+    var log = Logger.child({'name': 'login'});
     var user = req.body.username;
     var password =  req.body.password;
     User.find({username: user}).then(function(result) {
@@ -82,7 +82,7 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   logout: function logout(req, res) {
-      var log = bunyan.createLogger({name: 'logout'});
+      var log = Logger.child({'function name': 'logout'});
       req.session.user = null;
       req.session.isLoggedIn = false ;
       log.info('Logout Success');
@@ -102,7 +102,7 @@ module.exports = {
    * @param      {object}  res     The resource
    */
   session: function session(req, res) {
-    var log = bunyan.createLogger({name: 'Session'});
+    var log = Logger.child({'function name': 'session'});
     if (req.session.user) {
       log.info('session set');
       res.status(200);
@@ -112,5 +112,5 @@ module.exports = {
       log.info('session not set');
       res.send({code: 'UNAUTHORIZED'});
     }
-  }
+  },
 };
