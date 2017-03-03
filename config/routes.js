@@ -39,9 +39,17 @@ module.exports.routes = {
   '/user/session' : "UserController.session", 
   '/user/login' : "UserController.login",
   '/user/logout' : "UserController.logout",
-  '/user/createuser' : "UserController.createUser"
-
- 
+  'POST /user/createuser' : "UserController.createUser",
+  'POST /outlet/upload':"OutletsController.upload",
+  'POST /outlet/createoutlets':"OutletsController.createOutlet",
+  'POST /outlet/getoutlets':"OutletsController.getOutlet",
+  'POST /outlet/updateoutlets':"OutletsController.updateOutlet",
+  'POST /outlet/removeoutlets':"OutletsController.removeOutlet",
+  'POST /city/createcity': "CityController.createCity",
+  'POST /city/getcity': "CityController.getCity",
+  'POST /vendor/createvendor': "VendorController.createVendor",
+  'POST /vendor/getvendor': "VendorController.getVendor",
+  'POST /vendor/removevendor': "VendorController.removeVendor"
 
   /***************************************************************************
   *                                                                          *

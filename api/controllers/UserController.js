@@ -14,7 +14,7 @@ module.exports = {
    *
    * @memberof   UserController.js
    *
-   * @author     manoj
+   * @author     Raghu
    *
    * @param      {object}  req     The request
    * @param      {object}  res     The resource
@@ -29,7 +29,7 @@ module.exports = {
         res.send({error: err});
       }else {
         log.info('User created successfully');
-        res.send({code: 'SUCCESS'});
+        res.send({code: 'SUCCESS1'});
       }
     });
   },
@@ -40,8 +40,7 @@ module.exports = {
      *
      * @memberof   UserController.js
      *
-     * @author     manoj
-     *
+     * @author     Raghu
      * @param      {object}  req     The request
      * @param      {object}  res     The resource
      */
@@ -58,10 +57,12 @@ module.exports = {
           res.status(200);
           res.send({code: 'SUCCESS'});
         } else {
+           res.status(401);
           log.info('Failed to find User');
           res.send({code: 'FAILED'});
         }
       } else {
+        res.status(401);
         log.info('result array empty');
         res.send({code: 'FAILED'});
       }
@@ -77,7 +78,7 @@ module.exports = {
    *
    * @memberof   UserController.js
    *
-   * @author     manoj
+   * @author     Raghu
    *
    * @param      {object}  req     The request
    * @param      {object}  res     The resource

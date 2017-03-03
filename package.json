@@ -26,7 +26,9 @@
     "jscs": "^3.0.7",
     "jscs-stylish": "^0.3.1",
     "jshint-stylish": "^2.2.1",
+    "q": "^1.4.1",
     "rc": "1.0.1",
+    "request-promise": "^4.1.1",
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
     "sails-mongo": "^0.12.2"
@@ -40,7 +42,7 @@
     "type": "git",
     "url": "git://github.com/shoaibmerchant/sails-starter.git"
   },
-  "author": "shoaibmerchant",
+  "author": "Raghu",
   "license": "",
   "devDependencies": {
     "grunt-stylelint-reporter": "^2.0.0"

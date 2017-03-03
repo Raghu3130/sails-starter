@@ -62,7 +62,7 @@ module.exports.connections = {
     port: 27017,
     user: '', //optional
     password: '', //optional
-    database: 'sails-starter' //optional
+    database: 'deliverydon' //optional
   },
 
   /***************************************************************************
